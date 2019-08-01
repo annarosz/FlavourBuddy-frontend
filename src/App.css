@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  margin: 5px;
+}
+
+.container {
+  background-color: lightgreen;
+  padding: 20px;
+  height: 100vh;
+}
