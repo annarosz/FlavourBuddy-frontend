@@ -22,7 +22,7 @@ button {
   text-decoration: none;
 }
 
-.button-diet {
+.button-round {
   background-color: lavender;
   height: 100px;
   width: 100px;
@@ -52,41 +52,53 @@ a:active {
 
 .container {
   /* background-color: lightskyblue; */
-  width: 700px;
+  width: 100vw;
+  max-width: 640px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.container-intro {
+  background-color: white;
+  width: 100%;
+  height: 80vh;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.container-section {
+  background-color: white;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .triangle-down {
   width: 0;
   height: 0;
-  border-left: 50vw solid transparent;
-  border-right: 50vw solid transparent;
-  border-top: 125px solid white;
+  border-left: 320px solid transparent;
+  border-right: 320px solid transparent;
+  border-top: 15vh solid white;
   margin-bottom: 40px;
+  z-index: -100;
 }
 
-.container-intro {
-  background-color: white;
-  width: 100vw;
-  height: 80vh;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.container-choose-diet {
-  background-color: white;
-  width: 100vw;;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 40vw solid transparent;
+  border-right: 40vw solid transparent;
+  border-bottom: 15vh solid white;
+  z-index: -100;
 }
 
 .button-container {
@@ -94,12 +106,6 @@ a:active {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.container-choose-ingredient {
-  background-color: white;
-  width: 100vw;
-  padding: 20px;
 }
 
 .round-ingredient {
@@ -111,13 +117,6 @@ a:active {
   align-items: center;
   justify-content: center;
   display: none;
-}
-
-.container-yum {
-  background-color: white;
-  width: 100vw;
-  padding: 20px;
-  /* display: none; */
 }
 
 .pairing-ingredient {
