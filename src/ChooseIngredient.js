@@ -29,7 +29,6 @@ class ChooseIngredient extends React.Component {
             <p>Choose a key ingredient from below to discover it’s complementary flavours:</p>
 
             <div className="button-container">
-
               {data.showDiets.map((diet, index) => {
                 return (
                 <div key={index}>

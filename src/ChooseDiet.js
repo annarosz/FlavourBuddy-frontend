@@ -23,7 +23,7 @@ class ChooseDiet extends React.Component {
       return (
         <>
           <div className="container-section">
-            <h2>Choose your diet type:</h2>
+            <h2>Step 1. Choose your diet type:</h2>
             <div className="button-container">
               {data.showDiets.map((diet, index) => {
                 return <button key={index} className="button-round">{diet.dietType}</button>
