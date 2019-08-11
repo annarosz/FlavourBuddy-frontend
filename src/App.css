@@ -6,46 +6,62 @@
 /* ––––––––––––––––––––––––––– */
 
 button {
-  width: 80px;
-  text-decoration: none;
-  border: none;
-  padding: 10px;
   cursor: pointer;
-  outline: none;
-  color: #138B8A;
-  font-family: 'Lato', sans-serif;
+  color: #138b8a;
+  font-family: "Lato", sans-serif;
   font-weight: 700;
   font-size: 11pt;
-  /* line-height: 12pt; */
-  letter-spacing: 0.02em;
-  /* text-transform: uppercase; */
-  text-decoration: none;
+  background-color: transparent;
+  border: none;
 }
 
 .button-round {
-  background-color: lavender;
+  background-color: orange;
   height: 100px;
   width: 100px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 5px;
 }
 
-/* a {
-  color: #138B8A;
-  font-family: 'Lato', sans-serif;
-  font-weight: 700;
-  font-size: 9pt;
-  line-height: 12pt;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  text-decoration: none;
-} */
+button:hover {
+  color: dodgerblue;
+  border-color: currentColor;
+  background-color: white;
+}
 
-a:hover,
+button:active {
+  transform: translateY(5px);
+  filter: saturate(150%);
+  text-decoration-line: underline;
+  background-color: white;
+}
+
+button:focus {
+  outline: purple;
+  text-decoration-line: underline;
+  background-color: white;
+}
+
+a:hover {
+  color: dodgerblue;
+  border-color: currentColor;
+  background-color: white;
+}
+
 a:active {
-  color: orange;
+  transform: translateY(5px);
+  filter: saturate(150%);
+  text-decoration-line: underline;
+  background-color: white;
+}
+
+a:focus {
+  outline: purple;
+  text-decoration-line: underline;
+  background-color: white;
 }
 
 /* ––––––––––––––––––––––––––– */
@@ -68,10 +84,24 @@ a:active {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .container-section {
   background-color: white;
+  /* height: 600px; */
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer {
+  background-color: greenyellow;
+  /* height: 600px; */
   width: 100%;
   padding: 50px;
   display: flex;
@@ -107,7 +137,7 @@ a:active {
   border-top: 15vh solid white;
   margin-bottom: 40px;
   z-index: -100;
-  /* box-shadow: 0 10px 6px -6px #777; */
+  box-shadow: 0 10px 6px -6px #777;
 }
 
 .triangle-up {
@@ -120,14 +150,17 @@ a:active {
 }
 
 .button-container {
-  /* background-color: gray;   */
+  /* background-color: gray; */
+  width: 70%;
   display: flex;
+  /* flex-wrap: wrap; */
+  /* flex-direction: row; */
   align-items: center;
   justify-content: center;
 }
 
 .round-ingredient {
-  background-color: plum;  
+  background-color: plum;
   width: 80px;
   height: 80px;
   border-radius: 50%;
