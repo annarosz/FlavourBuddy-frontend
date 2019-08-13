@@ -10,15 +10,12 @@ class App extends React.Component {
     keyIngredients: false,
     pairings: [],
     selectedDiet: null,
-    keyIngredientFilter: "",
     learnMore: false
   };
 
   async componentDidMount() {
     const response = await fetch("http://localhost:5001/diets");
     const data = await response.json();
-
-    // this.setState({ data: data });
 
     const diets = data.showDiets.reduce((obj, item) => {
       obj[item.dietType] = item.ingredients;
@@ -38,17 +35,9 @@ class App extends React.Component {
     }
   };
 
-  resetChoices = () => {
-    this.setState({
-      dietCategories: false,
-      keyIngredients: false,
-      pairings: false
-    });
-  };
-
   displayKeyIngredients = () => {
     this.setState({
-      keyIngredients: !this.state.keyIngredients
+      keyIngredients: !this.keyIngredients
     });
   };
 
@@ -58,14 +47,36 @@ class App extends React.Component {
     });
   };
 
-  learnMore = () => {
+  displayLearnMore = () => {
     this.setState({
       learnMore: !this.state.learnMore
     });
   };
 
+  resetChoices = () => {
+    this.setState({
+      dietCategories: false,
+      keyIngredients: false,
+      pairings: [],
+      learnMore: false
+    });
+  };
+
   render() {
-    const { data } = this.state;
+    // learn more
+    let learnMoreSection = null;
+    if (this.state.learnMore) {
+      learnMoreSection = (
+        <p>
+          Letterpress cray DIY, enamel pin yr fashion axe raw denim edison bulb
+          poke plaid. PBR&B vinyl banh mi pop-up craft beer tumeric cray neutra
+          aesthetic cold-pressed. Skateboard 8-bit truffaut seitan swag keffiyeh
+          bitters. Lumbersexual cornhole stumptown edison bulb, semiotics
+          dreamcatcher deep v celiac PBR&B. Seitan godard cliche organic
+          church-key occupy fam tote bag semiotics cardigan mumblecore.
+        </p>
+      );
+    }
 
     // diet types
     let dietList = null;
@@ -85,13 +96,16 @@ class App extends React.Component {
                   return (
                     <button
                       onClick={() => {
-                        this.setState({ selectedDiet: diet });
+                        this.setState({
+                          selectedDiet: diet
+                        });
                         this.displayKeyIngredients();
+                        this.displayPairings();
                       }}
                       className="button-round"
                       key={index}
                     >
-                      <a href="#diets"> {diet} </a>
+                      <a href="#scroll"> {diet} </a>
                     </button>
                   );
                 })}
@@ -129,9 +143,8 @@ class App extends React.Component {
                       }}
                       key={index}
                       className="button-round"
-                      // style={{ backgroundColor: "lavender" }}
                     >
-                      <a href="#ingredients"> {keyIngredient} </a>
+                      <a href="#scroll"> {keyIngredient} </a>
                     </button>
                   </div>
                 );
@@ -146,25 +159,31 @@ class App extends React.Component {
     if (this.state.pairings.length > 0) {
       console.log(this.state.pairings);
       pairingList = (
-        <div
-          className="container-section"
-          id="pairings"
-          style={{ marginBottom: "20px" }}
-        >
-          <h2>YUMM</h2>
-          <h3>{this.state.keyIngredient} tastes delicious with:</h3>
-          {this.state.pairings
-            .sort((a, b) => (a > b ? 1 : -1))
-            .map((ingredient, index) => {
-              return (
-                <div key={index}>
-                  <div>
-                    <p>{ingredient}</p>
+        <>
+          <div
+            className="container-section-pairings"
+            id="pairings"
+            style={{ marginBottom: "20px" }}
+          >
+            <h2>YUMM</h2>
+            <h3>{this.state.keyIngredient} tastes delicious with:</h3>
+            {this.state.pairings
+              .sort((a, b) => (a > b ? 1 : -1))
+              .map((ingredient, index) => {
+                return (
+                  <div key={index}>
+                    <div>
+                      <p>{ingredient}</p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-        </div>
+                );
+              })}
+          </div>
+          <div className="footer">
+            <p>Happy Cooking!</p>
+            <a href="#home">Home</a>
+          </div>
+        </>
       );
     }
 
@@ -177,32 +196,27 @@ class App extends React.Component {
           <img src={FoodPic} alt="Food illustration" />
 
           <h1>FlavourBuddy</h1>
+          <br />
           <p>
             FlavourBuddy is an ingredient pairing app with a mission to
             encourage creative cooking and reduce food waste.
           </p>
-          <button onClick={this.learnMore}>Learn More</button>
+          {learnMoreSection}
+          <br />
+          <button onClick={this.displayLearnMore}>
+            {!this.state.learnMore ? "Read more" : "Read Less"}
+          </button>
           <button onClick={this.displayDietCategories}>
-            {!this.state.dietCategories ? "Get Started" : "Start Again"}
+            {!this.state.dietCategories ? "Get Started" : "Start again"}
           </button>
         </div>
 
         {dietList}
-        <ScrollableAnchor id={"diets"}>
-          <div> $$$ </div>
-        </ScrollableAnchor>
         {keyIngredientList}
-        <ScrollableAnchor id={"ingredients"}>
-          <div> – - - </div>
-        </ScrollableAnchor>
         {pairingList}
-        <ScrollableAnchor id={"pairings"}>
-          <div> *** </div>
+        <ScrollableAnchor id={"scroll"}>
+          <div />
         </ScrollableAnchor>
-
-        <div className="footer">
-          <a href="#home">Home</a>
-        </div>
       </div>
     );
   }
