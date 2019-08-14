@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import FoodPic from "./food.jpg";
+import FoodPic from "./FBillustration.svg";
+import Logo from "./logo.svg";
 import ScrollableAnchor from "react-scrollable-anchor";
 
 class App extends React.Component {
@@ -14,7 +15,7 @@ class App extends React.Component {
   };
 
   async componentDidMount() {
-    const response = await fetch("http://localhost:5001/diets");
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/diets`);
     const data = await response.json();
 
     const diets = data.showDiets.reduce((obj, item) => {
@@ -194,8 +195,7 @@ class App extends React.Component {
         </ScrollableAnchor>
         <div className="container-intro">
           <img src={FoodPic} alt="Food illustration" />
-
-          <h1>FlavourBuddy</h1>
+          <img src={Logo} alt="FlavourBuddy logo" />
           <br />
           <p>
             FlavourBuddy is an ingredient pairing app with a mission to
