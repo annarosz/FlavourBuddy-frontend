@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import FoodPic from "./FBillustration.svg";
 import Logo from "./logo.svg";
+import Delicious from "./delicious.svg";
+import Carrot from "./carrot.svg";
 import ScrollableAnchor from "react-scrollable-anchor";
 
 class App extends React.Component {
@@ -68,14 +70,21 @@ class App extends React.Component {
     let learnMoreSection = null;
     if (this.state.learnMore) {
       learnMoreSection = (
-        <p>
-          Letterpress cray DIY, enamel pin yr fashion axe raw denim edison bulb
-          poke plaid. PBR&B vinyl banh mi pop-up craft beer tumeric cray neutra
-          aesthetic cold-pressed. Skateboard 8-bit truffaut seitan swag keffiyeh
-          bitters. Lumbersexual cornhole stumptown edison bulb, semiotics
-          dreamcatcher deep v celiac PBR&B. Seitan godard cliche organic
-          church-key occupy fam tote bag semiotics cardigan mumblecore.
-        </p>
+        <>
+          <p>
+            FlavourBuddy allows you to ditch the recipe books and make delicious
+            meals with creativity and confidence – by using trusted flavour
+            combinations.
+          </p>
+          <p>
+            Instead of purchasing one-off ingredients for a recipe, FlavourBuddy
+            allows you to create with the ingredients you already have.
+            Otherwise when shopping, be inspired by fresh and in-season produce
+            and use FlavourBuddy as a guide.
+          </p>
+          {/* <img src={Carrot} style={{ width: "60px" }} /> */}
+          <br />
+        </>
       );
     }
 
@@ -83,36 +92,46 @@ class App extends React.Component {
     let dietList = null;
     if (this.state.dietCategories) {
       dietList = (
-        <div
-          id="dietList"
-          className="container-section"
-          style={{ backgroundColor: "pink" }}
-        >
-          <>
-            <h2>Choose your diet type:</h2>
-            <div className="button-container">
-              {Object.keys(this.state.diets)
-                .sort((a, b) => (a > b ? 1 : -1))
-                .map((diet, index) => {
-                  return (
-                    <button
-                      onClick={() => {
-                        this.setState({
-                          selectedDiet: diet
-                        });
-                        this.displayKeyIngredients();
-                        this.displayPairings();
-                      }}
-                      className="button-round"
-                      key={index}
-                    >
-                      <a href="#scroll"> {diet} </a>
-                    </button>
-                  );
-                })}
-            </div>
-          </>
-        </div>
+        <>
+          <div
+            id="dietList"
+            className="container-section"
+            style={{ backgroundColor: "#D3C014" }}
+          >
+            <>
+              <h2>Choose your diet type</h2>
+              <div className="button-container">
+                {Object.keys(this.state.diets)
+                  .sort((a, b) => (a > b ? 1 : -1))
+                  .map((diet, index) => {
+                    return (
+                      <button
+                        onClick={() => {
+                          this.setState({
+                            selectedDiet: diet
+                          });
+                          this.displayKeyIngredients();
+                          this.displayPairings();
+                        }}
+                        className="button-round"
+                        key={index}
+                        id="button-diet"
+                      >
+                        <a className="circle" href="#diets">
+                          {" "}
+                          {diet}{" "}
+                        </a>
+                      </button>
+                    );
+                  })}
+              </div>
+            </>
+          </div>
+          <div
+            className="triangle-down"
+            style={{ borderTop: "125px solid #D3C014" }}
+          />
+        </>
       );
     }
 
@@ -120,38 +139,49 @@ class App extends React.Component {
     let keyIngredientList = null;
     if (this.state.keyIngredients) {
       keyIngredientList = (
-        <div
-          className="container-section"
-          id="keyIngredients"
-          style={{ marginBottom: "20px", backgroundColor: "wheat" }}
-        >
-          <h3>Hello {this.state.selectedDiet} friend!</h3>
+        <>
+          <div
+            className="container-section"
+            id="keyIngredients"
+            style={{ backgroundColor: "#FDA94E" }}
+          >
+            <h3>Hello {this.state.selectedDiet} friend!</h3>
 
-          <h2>Choose your key ingredient:</h2>
-          <div className="button-container">
-            {this.state.diets[this.state.selectedDiet]
-              // .sort((a, b) => (a > b ? 1 : -1))
-              .map((ingredients, index) => {
-                const keyIngredient = Object.keys(ingredients)[0];
-                return (
-                  <div key={index}>
-                    <button
-                      onClick={() => {
-                        this.setState({
-                          pairings: ingredients[keyIngredient],
-                          keyIngredient: keyIngredient
-                        });
-                      }}
-                      key={index}
-                      className="button-round"
-                    >
-                      <a href="#scroll"> {keyIngredient} </a>
-                    </button>
-                  </div>
-                );
-              })}
+            <h2>Choose your key ingredient</h2>
+            <p>to discover its flavour combinations</p>
+            <br />
+            <div className="button-container">
+              {this.state.diets[this.state.selectedDiet]
+                // .sort((a, b) => (a > b ? 1 : -1))
+                .map((ingredients, index) => {
+                  const keyIngredient = Object.keys(ingredients)[0];
+                  return (
+                    <div key={index}>
+                      <button
+                        onClick={() => {
+                          this.setState({
+                            pairings: ingredients[keyIngredient],
+                            keyIngredient: keyIngredient
+                          });
+                        }}
+                        key={index}
+                        className="button-round"
+                      >
+                        <a className="circle" href="#below-key-ingredients">
+                          {" "}
+                          {keyIngredient}{" "}
+                        </a>
+                      </button>
+                    </div>
+                  );
+                })}
+            </div>
           </div>
-        </div>
+          <div
+            className="triangle-down"
+            style={{ borderTop: "125px solid #FDA94E" }}
+          />
+        </>
       );
     }
 
@@ -161,13 +191,10 @@ class App extends React.Component {
       console.log(this.state.pairings);
       pairingList = (
         <>
-          <div
-            className="container-section-pairings"
-            id="pairings"
-            style={{ marginBottom: "20px" }}
-          >
-            <h2>YUMM</h2>
-            <h3>{this.state.keyIngredient} tastes delicious with:</h3>
+          <div className="container-section" id="pairings">
+            <img src={Delicious} style={{ width: "250px" }} alt="Delicious" />
+            <br />
+            <h3>{this.state.keyIngredient} tastes great with</h3>
             {this.state.pairings
               .sort((a, b) => (a > b ? 1 : -1))
               .map((ingredient, index) => {
@@ -180,9 +207,18 @@ class App extends React.Component {
                 );
               })}
           </div>
+          <div className="triangle-down" />
           <div className="footer">
-            <p>Happy Cooking!</p>
-            <a href="#home">Home</a>
+            <h3 style={{ color: "#F9421E" }}>Happy Cooking!</h3>
+            <br />
+            <img
+              src={Logo}
+              style={{ width: "200px" }}
+              alt="FlavourBuddy logo"
+            />
+            <a href="#home">
+              <i class="fas fa-arrow-up" />
+            </a>
           </div>
         </>
       );
@@ -197,26 +233,34 @@ class App extends React.Component {
           <img src={FoodPic} alt="Food illustration" />
           <img src={Logo} alt="FlavourBuddy logo" />
           <br />
-          <p>
-            FlavourBuddy is an ingredient pairing app with a mission to
-            encourage creative cooking and reduce food waste.
-          </p>
+          <h3>
+            An ingredient pairing app that encourages creative cooking, and
+            reducing food waste
+          </h3>{" "}
           {learnMoreSection}
-          <br />
-          <button onClick={this.displayLearnMore}>
-            {!this.state.learnMore ? "Read more" : "Read Less"}
+          <button
+            style={{ marginBottom: "5px" }}
+            onClick={this.displayLearnMore}
+          >
+            {!this.state.learnMore ? "Read More" : "Read Less"}
           </button>
           <button onClick={this.displayDietCategories}>
-            {!this.state.dietCategories ? "Get Started" : "Start again"}
+            <a href="#diets">
+              {!this.state.dietCategories ? "Get Started" : ""}
+            </a>
           </button>
         </div>
+        <div className="triangle-down" />
 
         {dietList}
-        {keyIngredientList}
-        {pairingList}
-        <ScrollableAnchor id={"scroll"}>
+        <ScrollableAnchor id={"diets"}>
           <div />
         </ScrollableAnchor>
+        {keyIngredientList}
+        <ScrollableAnchor id={"below-key-ingredients"}>
+          <div />
+        </ScrollableAnchor>
+        {pairingList}
       </div>
     );
   }
