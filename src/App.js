@@ -3,7 +3,6 @@ import "./App.css";
 import FoodPic from "./FBillustration.svg";
 import Logo from "./logo.svg";
 import Delicious from "./delicious.svg";
-import Carrot from "./carrot.svg";
 import ScrollableAnchor from "react-scrollable-anchor";
 
 class App extends React.Component {

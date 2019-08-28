@@ -75,11 +75,13 @@ a:hover,
 a:active {
   color: black;
   text-decoration: underline;
+  background-color: transparent;
 }
 
 a:focus {
   color: #299351;
   text-decoration: underline;
+  background-color: transparent;
 }
 
 button {
