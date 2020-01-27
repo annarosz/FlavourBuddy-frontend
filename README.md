@@ -1,4 +1,4 @@
-# An ingredient pairing app that encourages creative cooking, and reducing food waste
+# An ingredient pairing app that encourages creative cooking and reducing food waste
 
 URL: https://flavourbuddy.netlify.com/
 
