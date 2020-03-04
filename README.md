@@ -2,7 +2,7 @@
 
 URL: https://flavourbuddy.netlify.com/
 
-<img width="500" alt="FlavourBuddy logo" src="https://raw.githubusercontent.com/annarosz/temp/master/fb_crop2.gif">
+<img width="500" alt="FlavourBuddy logo" src="https://raw.githubusercontent.com/annarosz/annarosz.github.io/master/FB_mockup.gif">
 
 FlavourBuddy allows you to ditch the recipe books and make delicious meals with creativity and confidence – by using trusted flavour combinations.
 
