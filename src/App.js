@@ -233,8 +233,8 @@ class App extends React.Component {
           <img src={Logo} alt="FlavourBuddy logo" />
           <br />
           <h3>
-            An ingredient pairing app that encourages creative cooking, and
-            reducing food waste
+            An ingredient pairing app that encourages creative cooking and
+            reducing food waste.
           </h3>{" "}
           {learnMoreSection}
           <button
