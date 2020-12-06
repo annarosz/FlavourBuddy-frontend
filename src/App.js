@@ -63,6 +63,7 @@ class App extends React.Component {
       learnMore: false
     });
   };
+  
 
   render() {
     // learn more
