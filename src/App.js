@@ -81,8 +81,6 @@ class App extends React.Component {
             Otherwise when shopping, be inspired by fresh and in-season produce
             and use FlavourBuddy as a guide.
           </p>
-          {/* <img src={Carrot} style={{ width: "60px" }} /> */}
-          <br />
         </>
       );
     }
